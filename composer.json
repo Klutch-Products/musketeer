@@ -1,30 +1,47 @@
 {
-    "name": "your-vendor-name/musketeer",
-    "description": "A custom WordPress theme for a digital advertising consulting agency",
-    "type": "wordpress-theme",
-    "license": "GPL-2.0-or-later",
-    "require": {
-      "php": ">=7.4",
-      "league/climate": "^3.8",
-      "league/color-extractor": "^0.3.2",
-      "league/csv": "^9.8",
-        "intervention/image": "^3.8"
-
-    },
-    "require-dev": {
-      "squizlabs/php_codesniffer": "^3.5",
-      "wp-coding-standards/wpcs": "^2.3",
-      "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-      "phpcompatibility/phpcompatibility-wp": "^2.1",
-      "roave/security-advisories": "dev-master"
-    },
-    "scripts": {
-      "phpcs": "phpcs --standard=WordPress",
-      "phpcbf": "phpcbf --standard=WordPress"
-    },
-    "config": {
-      "allow-plugins": {
-        "dealerdirect/phpcodesniffer-composer-installer": true
-      }
+  "name": "ajjavadi/musketeer-theme",
+  "description": "A custom WordPress theme for digital advertising consulting agencies",
+  "version": "1.0.0",
+  "type": "wordpress-theme",
+  "license": "GPL-2.0-or-later",
+  "keywords": ["wordpress", "theme", "digital-advertising", "consulting", "bootstrap"],
+  "homepage": "https://github.com/ajjavadi/musketeer-theme",
+  "authors": [
+    {
+      "name": "AJ Javadi",
+      "email": "your-email@example.com",
+      "homepage": "https://ajjavadi.com"
     }
+  ],
+  "support": {
+    "issues": "https://github.com/ajjavadi/musketeer-theme/issues",
+    "source": "https://github.com/ajjavadi/musketeer-theme"
+  },
+  "require": {
+    "php": ">=8.0",
+    "composer/installers": "^1.0 || ^2.0"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+    ,
+    "squizlabs/php_codesniffer": "^3.7",
+    "wp-coding-standards/wpcs": "^3.0",
+    "phpcompatibility/php-compatibility": "^9.3",
+    "intervention/image": "^2.7",
+    "league/color-extractor": "^0.3"
+  },
+  "scripts": {
+    "phpcs": "phpcs --standard=WordPress --extensions=php --ignore=*/vendor/*,*/node_modules/* .",
+    "phpcbf": "phpcbf --standard=WordPress --extensions=php --ignore=*/vendor/*,*/node_modules/* .",
+    "test": "phpcs && php -l functions.php"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "extra": {
+    "installer-name": "musketeer"
   }
+}
