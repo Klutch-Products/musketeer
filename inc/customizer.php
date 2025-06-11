@@ -1,4 +1,35 @@
-<?php
+/**
+* Image processing with Intervention Image
+*/
+function musketeer_resize_and_watermark( $image_path, $width, $height, $watermark_text ) {
+if ( ! class_exists( 'Intervention\Image\ImageManager' ) ) {
+return false;
+}
+
+$manager = new \Intervention\Image\ImageManager( [ 'driver' => 'gd' ] );
+$image   = $manager->make( $image_path );
+
+// Resize image
+$image->resize( $width, $height, function ( $constraint ) {
+$constraint->aspectRatio();
+$constraint->upsize();
+} );
+
+// Add watermark
+$image->text( $watermark_text, $width - 10, $height - 10, function ( $font ) {
+$font->file( get_template_directory() . '/assets/fonts/arial.ttf' );
+$font->size( 24 );
+$font->color( '#ffffff' );
+$font->align( 'right' );
+$font->valign( 'bottom' );
+} );
+
+$upload_dir     = wp_upload_dir();
+$processed_path = $upload_dir['path'] . '/processed_' . basename( $image_path );
+$image->save( $processed_path );
+
+return $upload_dir['url'] . '/processed_' . basename( $image_path );
+}<?php
 /**
  * Musketeer Theme Functions
  *
