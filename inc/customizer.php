@@ -1,3 +1,4 @@
+<?php
 /**
 * Image processing with Intervention Image
 */
@@ -29,7 +30,8 @@ $processed_path = $upload_dir['path'] . '/processed_' . basename( $image_path );
 $image->save( $processed_path );
 
 return $upload_dir['url'] . '/processed_' . basename( $image_path );
-}<?php
+}
+<?php
 /**
  * Musketeer Theme Functions
  *
@@ -196,3 +198,4 @@ function musketeer_resize_and_watermark( $image_path, $width, $height, $watermar
 		}
 	);
 }
+
